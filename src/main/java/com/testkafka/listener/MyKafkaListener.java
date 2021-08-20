@@ -20,7 +20,7 @@ public class MyKafkaListener {
      * @date: 2021/8/19  17:49
      * @desc: 发送消息时的监听
      */
-    @KafkaListener(topics = {"topic_1"})   // 应该是队列的名称
+    @KafkaListener(topics = {"topic_1"},groupId = "group_test_1")   // 应该是队列的名称
     public void sendListener(ConsumerRecord<?,?> record){
         System.out.println(123);
         log.info("messageWebSocket发送消息监听:"+record.value().toString());

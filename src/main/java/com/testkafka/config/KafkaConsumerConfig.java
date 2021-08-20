@@ -36,10 +36,10 @@ public class KafkaConsumerConfig {
     private String consumerSessionTimeoutMs = "30000";
 
     // key的序列化方式
-    private String consumer_key_deserializer = "org.apache.kafka.common.serialization.StringDeserializer";
+    private String consumerKeyDeserializer = "org.apache.kafka.common.serialization.StringDeserializer";
 
     // value的序列化方式
-    private String consumer_value_deserializer = "org.apache.kafka.common.serialization.StringDeserializer";
+    private String consumerValueDeserializer = "org.apache.kafka.common.serialization.StringDeserializer";
 
 
     /**
@@ -69,8 +69,8 @@ public class KafkaConsumerConfig {
         properties.put("auto.commit.interval.ms",consumerAutoCommitMs);
         properties.put("auto.offset.reset","earliest"); // 若kafka突发宕机了，这个earliest代表只恢复未消费的消息，已消费的不恢复
         properties.put("session.timeout.ms",consumerSessionTimeoutMs);
-        properties.put("key.deserializer",consumer_key_deserializer);
-        properties.put("value.deserializer",consumer_value_deserializer);
+        properties.put("key.deserializer",consumerKeyDeserializer);
+        properties.put("value.deserializer",consumerValueDeserializer);
 
         return properties;
     }

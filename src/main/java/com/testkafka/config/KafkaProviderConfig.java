@@ -21,7 +21,7 @@ import java.util.Map;
 @EnableKafka
 public class KafkaProviderConfig {
 
-    // 存消息的服务器地址？
+    // 存消息的服务器地址
     private String brokers = "10.3.7.185:9092";
 
     // 重试次数

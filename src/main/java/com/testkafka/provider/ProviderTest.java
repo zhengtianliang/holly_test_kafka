@@ -1,5 +1,7 @@
 package com.testkafka.provider;
 
+import com.alibaba.fastjson.JSON;
+import com.testkafka.pojo.MsgTransferDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -24,7 +26,12 @@ public class ProviderTest {
     @GetMapping(value = "/test/{mes}")
     public void test1(@PathVariable(value = "mes")String mes){
         log.info("发送消息前");
-        kafkaTemplate.send("topic_1",mes);
+        MsgTransferDTO msgTransferDTO = new MsgTransferDTO();
+        msgTransferDTO.setMsgContent(mes);
+        msgTransferDTO.setType("0");
+        String s = JSON.toJSONString(msgTransferDTO);
+        System.out.println("发送了消息："+s);
+        kafkaTemplate.send("topic_1",s);
         log.info("发送消息后");
     }
 }
